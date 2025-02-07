@@ -291,7 +291,7 @@ document.getElementById("diceBtn").addEventListener("click", function () {
 
 
     if (tog % 2 != 0) {
-        document.getElementById('tog').innerText = "Ian Turn : "
+        document.getElementById('tog').innerText = "Player 2 Turn : "
         play('p1', 'p1sum', 0, num)
 
     }
