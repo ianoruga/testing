@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="snake_ladder.css">
+</head>
+
+
+<body>
+
+    <h1>Snakes and ladder</h1>
+
+    <div id="diceCont">
+        <p id="tog">Player 1 Turn: </p>
+  
+        <button id="diceBtn">ROLL</button>
+    </div>
+
+    <div id="diceCont2">
+        <h1 class="tdice">Result</h1>
+        
+        <p id="dice">0</p>
+        <img class="dice_pic" src="dice-.png">
+    </div>
+
+    <div class="cont">
+
+
+
+        <div class="box" id="b100">
+
+            <h2>100</h2>
+        </div>
+        <div class="box" id="b99">
+            <h2>99</h2>
+        </div>
+        <div class="box" id="b98">
+            <h2>98</h2>
+        </div>
+        <div class="box" id="b97">
+            <h2>97</h2>
+        </div>
+        <div class="box" id="b96">
+            <h2>96</h2>
+        </div>
+        <div class="box" id="b95">
+            <h2>95</h2>
+        </div>
+        <div class="box" id="b94">
+            <h2>94</h2>
+        </div>
+        <div class="box" id="b93">
+            <h2>93</h2>
+        </div>
+        <div class="box" id="b92">
+            <h2>92</h2>
+        </div>
+        <div class="box" id="b91">
+            <h2>91</h2>
+        </div>
+        <div class="box" id="b81">
+            <h2>81</h2>
+        </div>
+        <div class="box" id="b82">
+            <h2>82</h2>
+        </div>
+        <div class="box" id="b83">
+            <h2>83</h2>
+        </div>
+        <div class="box" id="b84">
+            <h2>84</h2>
+        </div>
+        <div class="box" id="b85">
+            <h2>85</h2>
+        </div>
+        <div class="box" id="b86">
+            <h2>86</h2>
+        </div>
+        <div class="box" id="b87">
+            <h2>87</h2>
+        </div>
+        <div class="box" id="b88">
+            <h2>88</h2>
+        </div>
+        <div class="box" id="b89">
+            <h2>89</h2>
+        </div>
+        <div class="box" id="b90">
+            <h2>90</h2>
+        </div>
+        <div class="box" id="b80">
+            <h2>80</h2>
+        </div>
+        <div class="box" id="b79">
+            <h2>79</h2>
+        </div>
+        <div class="box" id="b78">
+            <h2>78</h2>
+        </div>
+        <div class="box" id="b77">
+            <h2>77</h2>
+        </div>
+        <div class="box" id="b76">
+            <h2>76</h2>
+        </div>
+        <div class="box" id="b75">
+            <h2>75</h2>
+        </div>
+        <div class="box" id="b74">
+            <h2>74</h2>
+        </div>
+        <div class="box" id="b73">
+            <h2>73</h2>
+        </div>
+        <div class="box" id="b72">
+            <h2>72</h2>
+        </div>
+        <div class="box" id="b71">
+            <h2>71</h2>
+        </div>
+        <div class="box" id="b61">
+            <h2>61</h2>
+        </div>
+        <div class="box" id="b62">
+            <h2>62</h2>
+        </div>
+        <div class="box" id="b63">
+            <h2>63</h2>
+        </div>
+        <div class="box" id="b64">
+            <h2>64</h2>
+        </div>
+        <div class="box" id="b65">
+            <h2>65</h2>
+        </div>
+        <div class="box" id="b66">
+            <h2>66</h2>
+        </div>
+        <div class="box" id="b67">
+            <h2>67</h2>
+        </div>
+        <div class="box" id="b68">
+            <h2>68</h2>
+        </div>
+        <div class="box" id="b69">
+            <h2>69</h2>
+        </div>
+        <div class="box" id="b70">
+            <h2>70</h2>
+        </div>
+        <div class="box" id="b60">
+            <h2>60</h2>
+        </div>
+        <div class="box" id="b59">
+            <h2>59</h2>
+        </div>
+        <div class="box" id="b58">
+            <h2>58</h2>
+        </div>
+        <div class="box" id="b57">
+            <h2>57</h2>
+        </div>
+        <div class="box" id="b56">
+            <h2>56</h2>
+        </div>
+        <div class="box" id="b55">
+            <h2>55</h2>
+        </div>
+        <div class="box" id="b54">
+            <h2>54</h2>
+        </div>
+        <div class="box" id="b53">
+            <h2>53</h2>
+        </div>
+        <div class="box" id="b52">
+            <h2>52</h2>
+        </div>
+        <div class="box" id="b51">
+            <h2>51</h2>
+        </div>
+        <div class="box" id="b41">
+            <h2>41</h2>
+        </div>
+        <div class="box" id="b42">
+            <h2>42</h2>
+        </div>
+        <div class="box" id="b43">
+            <h2>43</h2>
+        </div>
+        <div class="box" id="b44">
+            <h2>44</h2>
+        </div>
+        <div class="box" id="b45">
+            <h2>45</h2>
+        </div>
+        <div class="box" id="b46">
+            <h2>46</h2>
+        </div>
+        <div class="box" id="b47">
+            <h2>47</h2>
+        </div>
+        <div class="box" id="b48">
+            <h2>48</h2>
+        </div>
+        <div class="box" id="b49">
+            <h2>49</h2>
+        </div>
+        <div class="box" id="b50">
+            <h2>50</h2>
+        </div>
+        <div class="box" id="b40">
+            <h2>40</h2>
+        </div>
+        <div class="box" id="b39">
+            <h2>39</h2>
+        </div>
+        <div class="box" id="b38">
+            <h2>38</h2>
+        </div>
+        <div class="box" id="b37">
+            <h2>37</h2>
+        </div>
+        <div class="box" id="b36">
+            <h2>36</h2>
+        </div>
+        <div class="box" id="b35">
+            <h2>35</h2>
+        </div>
+        <div class="box" id="b34">
+            <h2>34</h2>
+        </div>
+        <div class="box" id="b33">
+            <h2>33</h2>
+        </div>
+        <div class="box" id="b32">
+            <h2>32</h2>
+        </div>
+        <div class="box" id="b31">
+            <h2>31</h2>
+        </div>
+        <div class="box" id="b21">
+            <h2>21</h2>
+        </div>
+        <div class="box" id="b22">
+            <h2>22</h2>
+        </div>
+        <div class="box" id="b23">
+            <h2>23</h2>
+        </div>
+        <div class="box" id="b24">
+            <h2>24</h2>
+        </div>
+        <div class="box" id="b25">
+            <h2>25</h2>
+        </div>
+        <div class="box" id="b26">
+            <h2>26</h2>
+        </div>
+        <div class="box" id="b27">
+            <h2>27</h2>
+        </div>
+        <div class="box" id="b28">
+            <h2>28</h2>
+        </div>
+        <div class="box" id="b29">
+            <h2>29</h2>
+        </div>
+        <div class="box" id="b30">
+            <h2>30</h2>
+        </div>
+        <div class="box" id="b20">
+            <h2>20</h2>
+        </div>
+        <div class="box" id="b19">
+            <h2>19</h2>
+        </div>
+        <div class="box" id="b18">
+            <h2>18</h2>
+        </div>
+        <div class="box" id="b17">
+            <h2>17</h2>
+        </div>
+        <div class="box" id="b16">
+            <h2>16</h2>
+        </div>
+        <div class="box" id="b15">
+            <h2>15</h2>
+        </div>
+        <div class="box" id="b14">
+            <h2>14</h2>
+        </div>
+        <div class="box" id="b13">
+            <h2>13</h2>
+        </div>
+        <div class="box" id="b12">
+            <h2>12</h2>
+        </div>
+        <div class="box" id="b11">
+            <h2>11</h2>-3
+        </div>
+        <div class="box normal" id="b01">
+            
+            <p id="p1"></p>
+            <p id="p2"></p>
+            
+        </div>
+        <div class="box normal" id="b02">
+         
+        </div>
+        <div class="box normal" id="b03">
+           
+        </div>
+        <div class="box positive" id="b04">
+            
+        </div>
+        <div class="box questions" id="b05">
+           
+        </div>
+        <div class="box negative" id="b06">
+           
+        </div>
+        <div class="box" id="b07">
+           
+        </div>
+        <div class="box" id="b08">
+           
+        </div>
+        <div class="box" id="b09">
+            
+        </div>
+        <div class="box" id="b10">
+           
+        </div>
+
+
+  
+
+
+
+    </div>
+    <div class="Q1"><h1>What is the derivative of 2x^2</h1>
+    <input class="ans1" type="text"> <button id="submit1" >Submit</button>
+    </div>
+    
+    <div class="notif1"><h1>Negative tile! -3</h1><button id="ok">Okay</button></div>
+  
+    <div class="N1"><h1>What is the derivative of 2x^2</h1>
+        <input class="ans2" type="text"> <button id="submit2">Okay</button>
+        </div>
+
+        <div class="N2"><h1>What is the derivative of 2x^2</h1>
+            <input class="ans3" type="text"> <button id="submit3">Okay</button>
+            </div>
+
+</body>
+<script src="snake_ladder.js"></script>
+
+</html>

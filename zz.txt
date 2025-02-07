@@ -1,0 +1,36 @@
+let specialQuestion = getRandomQuestion(sum);
+        if (specialQuestion) {
+            document.querySelector(".Q1").style.display = "inline-block";
+            document.querySelector(".Q1 h1").innerText = specialQuestion.question;
+            document.getElementById("submit1").onclick = function () {
+                let userAnswer = document.querySelector(".ans1").value;
+                if (userAnswer === specialQuestion.answer) {
+                    alert("Correct! Retain position.");
+                } else {
+                    if (psum === 'p1sum') p1sum += specialQuestion.consequence;
+                    else p2sum += specialQuestion.consequence;
+                    alert("Incorrect! Moving back.");
+                }
+                document.querySelector(".Q1").style.display = "none";
+                play("p1", "p1sum", 0, 0);
+            };
+        }
+
+
+if (specialTiles[p1sum]) {
+            document.querySelector(".Q1").style.display = "inline-block";
+            document.querySelector(".Q1 h1").innerText = specialTiles[p1sum].question;
+            document.getElementById("submit1").onclick = function () {
+                let userAnswer = document.querySelector(".ans1").value;
+                if (userAnswer === specialTiles[p1sum].answer) {
+                    alert("Correct! Retain position.");
+                    document.querySelector(".Q1").style.display = "none";
+                } else {
+                    
+                    p1sum += specialTiles[p1sum].consequence; // Move back if incorrect
+                    alert("Incorrect! Moving back.");
+                    document.querySelector(".Q1").style.display = "none";
+                    play("p1", "p1sum", 0, 0); // Recalculate position after moving back
+                }
+            };
+        }

@@ -1,0 +1,280 @@
+let tog = 1
+let rollingSound = new Audio('rpg-dice-rolling-95182.mp3')
+let winSound = new Audio('winharpsichord-39642.mp3')
+
+
+
+
+let p1sum = 0
+let p2sum = 0
+let anss = document.querySelector(".ans1");
+const container = document.querySelector(".dice_pic");
+const val = document.getElementById("dice");
+
+function play(player, psum, correction, num) {
+    let sum
+    const specialTiles = {
+        5: { question: "What is the sum of -5 and 8?", answer: "3", consequence: -2 },
+        50: { question: "What is 5 + 3?", answer: "8", consequence: -3 },
+        8: { question: "Divide: -56 ÷ 7", answer: "-8", consequence: -5 },
+        
+    };
+    const negativeTiles = {
+        6: { question: "Negative tiles! -3", answer: "8x", consequence: -3 }
+    };
+    const positiveTiles = {
+        4: { question: "Positive tiles! +10", answer: "8x", consequence: 10 }
+    };
+
+   
+   
+    
+    if (psum == 'p1sum') {
+
+        p1sum = p1sum + num
+
+        if (p1sum > 100) {
+            p1sum = p1sum - num
+            // sum = p1sum
+        }
+
+        
+        if (p1sum == 4) {
+            
+        }
+
+        if (p1sum == 6) {
+              
+        }
+       
+        
+    
+
+        if (specialTiles[p1sum]) {
+            document.querySelector(".Q1").style.display = "inline-block";
+            document.querySelector(".Q1 h1").innerText = specialTiles[p1sum].question;
+            document.getElementById("submit1").onclick = function () {
+                let userAnswer = document.querySelector(".ans1").value;
+                if (userAnswer === specialTiles[p1sum].answer) {
+                    alert("Correct! Retain position.");
+                    document.querySelector(".Q1").style.display = "none";
+                } else {
+                    
+                    p1sum += specialTiles[p1sum].consequence; // Move back if incorrect
+                    alert("Incorrect! Moving back.");
+                    document.querySelector(".Q1").style.display = "none";
+                    play("p1", "p1sum", 0, 0); // Recalculate position after moving back
+                }
+            };
+        }
+        if (negativeTiles[p1sum]) {
+            document.querySelector(".N1").style.display = "inline-block";
+            document.querySelector(".N1 h1").innerText = negativeTiles[p1sum].question;
+            document.getElementById("submit2").onclick = function () {
+                let userAnswer = document.querySelector(".ans2").value;
+                if (userAnswer === negativeTiles[p1sum].answer) {
+                    alert("Correct! Retain position.");
+                    document.querySelector(".N1").style.display = "none";
+                } else {
+                    p1sum += negativeTiles[p1sum].consequence; // Move back if incorrect
+                    document.querySelector(".N1").style.display = "none";
+                    play("p1", "p1sum", 0, 0); // Recalculate position after moving back
+                }
+            };
+        }
+
+        if (positiveTiles[p1sum]) {
+            document.querySelector(".N2").style.display = "inline-block";
+            document.querySelector(".N2 h1").innerText = positiveTiles[p1sum].question;
+            document.getElementById("submit3").onclick = function () {
+                let userAnswer = document.querySelector(".ans3").value;
+                if (userAnswer === positiveTiles[p1sum].answer) {
+                    alert("Correct! Retain position.");
+                    document.querySelector(".N2").style.display = "none";
+                } else {
+                    p1sum += positiveTiles[p1sum].consequence; // Move back if incorrect
+                    document.querySelector(".N2").style.display = "none";
+                    play("p1", "p1sum", 0, 0); // Recalculate position after moving back
+                }
+            };
+        }
+        sum = p1sum
+            
+
+
+    }
+
+    if (psum == 'p2sum') {
+
+        p2sum = p2sum + num
+
+        if (p2sum > 100) {
+            p2sum = p2sum - num
+            // sum = p1sum
+        }
+        
+
+      
+
+        
+       
+
+        if (specialTiles[p2sum]) {
+            document.querySelector(".Q1").style.display = "inline-block";
+            document.querySelector(".Q1 h1").innerText = specialTiles[p2sum].question;
+            
+            document.getElementById("submit1").onclick = function () {
+                let userAnswer = document.querySelector(".ans1").value;
+                if (userAnswer === specialTiles[p2sum].answer) {
+                    alert("Correct! Retain position.");
+                    document.querySelector(".Q1").style.display = "none";
+                } else {
+                    p2sum += specialTiles[p2sum].consequence; // Move back if incorrect
+                    alert("Incorrect! Moving back.");
+                    document.querySelector(".Q1").style.display = "none";
+                    play("p2", "p2sum", 55, 0); // Recalculate position after moving back
+                }
+            };
+        }
+
+        if (negativeTiles[p2sum]) {
+            document.querySelector(".N1").style.display = "inline-block";
+            document.querySelector(".N1 h1").innerText = negativeTiles[p2sum].question;
+            document.getElementById("submit2").onclick = function () {
+                let userAnswer = document.querySelector(".ans2").value;
+                if (userAnswer === negativeTiles[p2sum].answer) {
+                    alert("Correct! Retain position.");
+                    document.querySelector(".N1").style.display = "none";
+                } else {
+                    p2sum += negativeTiles[p2sum].consequence; // Move back if incorrect
+                    document.querySelector(".N1").style.display = "none";
+                    play("p2", "p2sum", 55, 0); // Recalculate position after moving back
+                }
+            };
+        }
+
+        if (positiveTiles[p2sum]) {
+            document.querySelector(".N2").style.display = "inline-block";
+            document.querySelector(".N2 h1").innerText = positiveTiles[p2sum].question;
+            document.getElementById("submit3").onclick = function () {
+                let userAnswer = document.querySelector(".ans3").value;
+                if (userAnswer === positiveTiles[p2sum].answer) {
+                    alert("Correct! Retain position.");
+                    document.querySelector(".N2").style.display = "none";
+                } else {
+                    p2sum += positiveTiles[p2sum].consequence; // Move back if incorrect
+                    document.querySelector(".N2").style.display = "none";
+                    play("p2", "p2sum", 55, 0); // Recalculate position after moving back
+                }
+            };
+        }
+        sum = p2sum
+
+
+
+    }
+
+
+    document.getElementById(`${player}`).style.transition = `linear all .5s`
+
+
+
+
+
+    if (sum < 10) {
+
+        document.getElementById(`${player}`).style.left = `${(sum - 1) * 62}px`
+        document.getElementById(`${player}`).style.top = `${-0 * 62 - correction}px`
+
+
+    }
+
+    else if (sum == 100) {
+        winSound.play()
+        if (player == 'p1') {
+            alert("Red Won !!")
+        }
+        else if (player == 'p2') {
+            alert("Yellow Won !!")
+        }
+        location.reload()
+    }
+
+    else {
+
+        numarr = Array.from(String(sum))
+        n1 = eval(numarr.shift())
+        n2 = eval(numarr.pop())
+        // console.log(n1, n2)
+
+        if (n1 % 2 != 0) {
+
+            if (n2 == 0) {
+                document.getElementById(`${player}`).style.left = `${(9) * 62}px`
+                document.getElementById(`${player}`).style.top = `${(-n1 + 1) * 62 - correction}px`
+            }
+            else {
+                document.getElementById(`${player}`).style.left = `${(9 - (n2 - 1)) * 62}px`
+                document.getElementById(`${player}`).style.top = `${-n1 * 62 - correction}px`
+
+            }
+
+        }
+        else if (n1 % 2 == 0) {
+            if (n2 == 0) {
+
+                document.getElementById(`${player}`).style.left = `${(0) * 62}px`
+                document.getElementById(`${player}`).style.top = `${(-n1 + 1) * 62 - correction}px`
+            }
+            else {
+
+                document.getElementById(`${player}`).style.left = `${(n2 - 1) * 62}px`
+                document.getElementById(`${player}`).style.top = `${-n1 * 62 - correction}px`
+            }
+
+        }
+
+
+
+    }
+}
+
+
+document.getElementById("diceBtn").addEventListener("click", function () {
+    rollingSound.play()
+    num = Math.floor(Math.random() * (6 - 1 + 1) + 1)
+    document.getElementById("dice").innerText = num
+    container.src = "dice-" + num + ".png";
+
+
+
+
+
+    if (tog % 2 != 0) {
+        document.getElementById('tog').innerText = "Player 2 Turn : "
+        play('p1', 'p1sum', 0, num)
+
+    }
+
+    else if (tog % 2 == 0) {
+        document.getElementById('tog').innerText = "Player 1 Turn : "
+
+        play('p2', 'p2sum', 55, num)
+
+    }
+
+    tog = tog + 1
+
+
+
+
+})
+
+document.getElementById("diceBtn").addEventListener("click", function (){
+    play('p1','p1sum',pass,num)
+})
+
+document.getElementById("submit1").addEventListener("click", function (){
+    document.querySelector(".Q1").style.display = 'none';
+})
+

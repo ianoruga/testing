@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Snake and Ladder Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background-color: #f3f3f3;
+    }
+    #board {
+      display: grid;
+      grid-template-columns: repeat(10, 50px);
+      grid-template-rows: repeat(10, 50px);
+      gap: 2px;
+      background-color: #222;
+    }
+    .tile {
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      background-color: #4caf50;
+      position: relative;
+    }
+    .special-tile {
+      background-color: #ff9800;
+    }
+    .math-tile {
+      background-color: #03a9f4;
+    }
+    .player-marker {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      position: absolute;
+      bottom: 5px;
+    }
+    .player-1 {
+      background-color: red;
+    }
+    .player-2 {
+      background-color: blue;
+    }
+    #controls {
+      margin-top: 20px;
+    }
+    #player-status {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Snake and Ladder Game</h1>
+  <div id="board"></div>
+  <div id="controls">
+    <button id="rollDice">Roll Dice</button>
+    <p id="diceResult">Dice Result: </p>
+  </div>
+  <div id="player-status">
+    <p id="playerTurn">Player 1's Turn</p>
+  </div>
+
+  <script>
+    const boardSize = 100;
+    const boardElement = document.getElementById('board');
+    const rollDiceButton = document.getElementById('rollDice');
+    const diceResultElement = document.getElementById('diceResult');
+    const playerTurnElement = document.getElementById('playerTurn');
+
+    let playerPositions = [0, 0];
+    let currentPlayer = 0;
+    let tiles = [];
+
+    // Special tiles with effects
+    const specialTiles = {
+      12: -5,
+      25: 3,
+      55: -8,
+      77: 10
+    };
+
+    // Math tiles with questions
+    const mathTiles = {
+      33: { question: "What is 5 + 3?", answer: 8 },
+      66: { question: "What is 9 - 4?", answer: 5 }
+    };
+
+    // Create the game board
+    function createBoard() {
+      for (let i = 1; i <= boardSize; i++) {
+        const tile = document.createElement('div');
+        tile.classList.add('tile');
+        tile.textContent = i;
+        
+        if (specialTiles[i]) {
+          tile.classList.add('special-tile');
+        } else if (mathTiles[i]) {
+          tile.classList.add('math-tile');
+        }
+        tiles.push(tile);
+        boardElement.appendChild(tile);
+      }
+      updatePlayerMarkers();
+    }
+
+    // Roll the dice and move the player
+    function rollDice() {
+      const diceRoll = Math.floor(Math.random() * 6) + 1;
+      diceResultElement.textContent = `Dice Result: ${diceRoll}`;
+
+      // Update player position
+      playerPositions[currentPlayer] += diceRoll;
+
+      if (playerPositions[currentPlayer] >= boardSize) {
+        alert(`Player ${currentPlayer + 1} wins!`);
+        resetGame();
+        return;
+      }
+
+      checkSpecialTile(playerPositions[currentPlayer]);
+      checkMathTile(playerPositions[currentPlayer]);
+      updatePlayerMarkers();
+      updatePlayerTurn();
+    }
+
+    // Handle special tiles
+    function checkSpecialTile(position) {
+      if (specialTiles[position]) {
+        const effect = specialTiles[position];
+        playerPositions[currentPlayer] += effect;
+        alert(`Player ${currentPlayer + 1} hit a special tile: Move ${effect} steps!`);
+      }
+    }
+
+    // Handle math tiles
+    function checkMathTile(position) {
+      if (mathTiles[position]) {
+        const { question, answer } = mathTiles[position];
+        const playerAnswer = prompt(question);
+        if (parseInt(playerAnswer) !== answer) {
+          alert(`Wrong answer! Move back 5 tiles.`);
+          playerPositions[currentPlayer] -= 5;
+        } else {
+          alert(`Correct answer! Stay on your current tile.`);
+        }
+      }
+    }
+
+    // Update player markers on the board
+    function updatePlayerMarkers() {
+      // Clear all existing markers
+      tiles.forEach(tile => {
+        tile.querySelectorAll('.player-marker').forEach(marker => marker.remove());
+      });
+
+      // Add player markers
+      playerPositions.forEach((position, index) => {
+        if (position > 0 && position <= boardSize) {
+          const marker = document.createElement('div');
+          marker.classList.add('player-marker');
+          marker.classList.add(index === 0 ? 'player-1' : 'player-2');
+          tiles[position - 1].appendChild(marker);
+        }
+      });
+    }
+
+    // Update player turn and display
+    function updatePlayerTurn() {
+      currentPlayer = (currentPlayer + 1) % 2;
+      playerTurnElement.textContent = `Player ${currentPlayer + 1}'s Turn`;
+    }
+
+    // Reset the game
+    function resetGame() {
+      playerPositions = [0, 0];
+      currentPlayer = 0;
+      playerTurnElement.textContent = `Player 1's Turn`;
+      diceResultElement.textContent = `Dice Result: `;
+      updatePlayerMarkers();
+    }
+
+    rollDiceButton.addEventListener('click', rollDice);
+
+    // Initialize the game
+    createBoard();
+  </script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake and Ladder</title>
+    <style>
+        body { text-align: center; font-family: Arial, sans-serif; }
+        .board { display: grid; grid-template-columns: repeat(10, 50px); width: 500px; margin: auto; position: relative; }
+        .tile { width: 50px; height: 50px; border: 1px solid black; display: flex; justify-content: center; align-items: center; position: relative; }
+        .player { width: 20px; height: 20px; border-radius: 50%; position: absolute; transition: all 0.5s; }
+        #player1 { background: red; }
+        #player2 { background: yellow; }
+        .popup { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; border: 2px solid black; }
+        .indicator { position: absolute; bottom: 5px; right: 5px; font-size: 12px; font-weight: bold; color: blue; }
+    </style>
+</head>
+<body>
+    <h1>Snake and Ladder Game</h1>
+    <div class="board" id="board"></div>
+    <button onclick="rollDice()">Roll Dice</button>
+    <p id="turn">Player 1's Turn</p>
+    <p id="position">Player 1 Position: 1 | Player 2 Position: 1</p>
+    <div id="popup" class="popup">
+        <p id="question"></p>
+        <input type="text" id="answer">
+        <button onclick="checkAnswer()">Submit</button>
+    </div>
+    <script>
+        const board = document.getElementById("board");
+        const popup = document.getElementById("popup");
+        const questionText = document.getElementById("question");
+        const answerInput = document.getElementById("answer");
+        const positionText = document.getElementById("position");
+        let currentPlayer = 1;
+        let playerPositions = { 1: 1, 2: 1 };
+        const specialTiles = [5, 15, 25, 35, 45, 55, 65, 75, 85, 95];
+        const questions = [
+            { q: "What is 1+1?", a: "2" },
+            { q: "What is 3+2?", a: "5" },
+            { q: "What is 5-2?", a: "3" },
+            { q: "What is 6÷2?", a: "3" }
+        ];
+        const snakes = { 16: 6, 48: 30, 62: 19, 88: 24 };
+        const ladders = { 3: 22, 8: 26, 28: 53, 58: 77 };
+
+        for (let i = 100; i >= 1; i--) {
+            let tile = document.createElement("div");
+            tile.className = "tile";
+            tile.innerText = i;
+            tile.id = `tile-${i}`;
+            board.appendChild(tile);
+        }
+        
+        function rollDice() {
+            let dice = Math.floor(Math.random() * 6) + 1;
+            let newPosition = playerPositions[currentPlayer] + dice;
+            if (newPosition > 100) return;
+            playerPositions[currentPlayer] = newPosition;
+            if (snakes[newPosition]) playerPositions[currentPlayer] = snakes[newPosition];
+            if (ladders[newPosition]) playerPositions[currentPlayer] = ladders[newPosition];
+            updatePlayerPosition();
+            if (specialTiles.includes(newPosition)) {
+                askQuestion(newPosition);
+            } else {
+                switchTurn();
+            }
+        }
+        
+        function askQuestion(position) {
+            let randomQ = questions[Math.floor(Math.random() * questions.length)];
+            questionText.innerText = randomQ.q;
+            popup.style.display = "block";
+            popup.dataset.correctAnswer = randomQ.a;
+            popup.dataset.position = position;
+        }
+        
+        function checkAnswer() {
+            let userAnswer = answerInput.value;
+            let correctAnswer = popup.dataset.correctAnswer;
+            if (userAnswer !== correctAnswer) {
+                playerPositions[currentPlayer] -= 3;
+                alert("Wrong answer! Moving back.");
+            } else {
+                alert("Correct! Staying on position.");
+            }
+            popup.style.display = "none";
+            updatePlayerPosition();
+            switchTurn();
+        }
+        
+        function updatePlayerPosition() {
+            positionText.innerText = `Player 1 Position: ${playerPositions[1]} | Player 2 Position: ${playerPositions[2]}`;
+        }
+        
+        function switchTurn() {
+            currentPlayer = currentPlayer === 1 ? 2 : 1;
+            document.getElementById("turn").innerText = `Player ${currentPlayer}'s Turn`;
+        }
+    </script>
+</body>
+</html>

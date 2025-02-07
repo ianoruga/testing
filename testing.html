@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dice Roll</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial, sans-serif;
+      margin-top: 50px;
+    }
+  </style>
+  <script>
+    function rollDice() {
+      // Generate a random number between 1 and 6
+      const diceValue = Math.floor(Math.random() * 6) + 1;
+      // Select the dice image element
+      const diceImg = document.getElementById("diceImage");
+      // Change the image source based on the dice value
+      diceImg.src = "dice-" + diceValue + ".png";
+      // Update the alt attribute for accessibility
+      diceImg.alt = "Dice showing " + diceValue;
+    }
+  </script>
+</head>
+<body>
+  <h1>Roll the Dice!</h1>
+  <!-- The dice image; initial image set to dice1.png -->
+  <img id="diceImage" src="dice-1.png" alt="Dice showing 1" width="200">
+  
+  
+  <br><br>
+  <!-- Button to roll the dice -->
+  <button onclick="rollDice()">Roll Dice</button>
+</body>
+</html>
