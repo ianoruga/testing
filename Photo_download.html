@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CPET_Photobooth</title>
+    <link rel="stylesheet" href="booth_style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Koulen&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kreon:wght@300..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
+    </head>
+<body class="photoDownload">
+    <div class="main-container">
+       
+    
+        <canvas id="finalCanvas"></canvas>
+        <div class="right">
+            <h2>Select Frame Color</h2>
+
+            <div class="color-grid">
+                <button class="color-btn" data-color="img/frame1.png" style="background-image: url('img/frame1.png');"></button>
+                <button class="color-btn" data-color="img/frame2.png" style="background-image: url('img/frame2.png');"></button>
+                <button class="color-btn" data-color="img/frame3.png" style="background-image: url('img/frame3.png');"></button>
+                <button class="color-btn" data-color="img/frame6.png" style="background-image: url('img/frame6.png');"></button>
+                <button class="color-btn" data-color="img/frame4.png" style="background-image: url('img/frame4.png');"></button>
+                <button class="color-btn" data-color="img/frame5.png" style="background-image: url('img/frame5.png');"></button>
+            
+            </div>
+            <div class="button-last">
+                <a href="Photobooth.html"><button class="dl">Retake</button></a>
+                <button class="dl" id="download-btn">Download</button>
+            </div>
+        </div>
+        
+    </div>
+</body>
+<script src="Photo_download.js"></script>
+</html>
