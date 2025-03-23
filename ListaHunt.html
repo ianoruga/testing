@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="ListaHunt.css" />
+  </head>
+  <body>
+    <div class="main_cont">
+      <div class="camera_container">
+        <div class="cc">
+          <img class="logo" src="swag.png" />
+          <div class="camera_container2">
+            <video id="video" autoplay></video>
+            <div id="countdown"></div>
+          </div>
+          <div class="buttons">
+            <button id="frame_page" onclick="p4()">Select Frame</button>
+            <button id="start" onclick="startCapture()">Start</button>
+            <select id="photo_num">
+              <option value="1">1 Photo</option>
+              <option value="2">2 Photos</option>
+              <option value="3">3 Photos</option>
+              <option value="4">4 Photos</option>
+            </select>
+            <a href="ListaHunt.html"
+              ><button id="retake" disabled>Retake</button></a
+            >
+            <p id="counter">0/4</p>
+          </div>
+        </div>
+      </div>
+      <div class="photo_cont"></div>
+    </div>
+  </body>
+  <script src="ListaHunt.js"></script>
+</html>

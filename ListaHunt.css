@@ -1,0 +1,249 @@
+body {
+  background: url(listahuntbg.png);
+  background-size: cover;
+}
+.main_cont {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: repeat(6, minmax(0, 1fr));
+  height: 95vh;
+}
+.camera_container {
+  display: flex;
+  grid-column-start: 1;
+  grid-column: span 2 / span 2;
+  grid-row: span 6 / span 6;
+
+  height: 100%;
+  width: 100%;
+}
+.camera_container2 {
+  display: flex;
+  height: 80%;
+  width: 90%;
+}
+.cc {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  width: 250px;
+  height: 40px;
+}
+
+#video {
+  transform: scaleX(-1);
+  width: 100%;
+
+  align-self: center;
+}
+.buttons {
+  gap: 40px;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  z-index: 9999;
+}
+
+#start {
+  color: white;
+  border-radius: 2em;
+  font-size: 16px;
+  position: relative;
+  cursor: pointer;
+  padding: 10px 20px;
+  border: none;
+  background: #1a1a1a;
+  transition: all 0.1s linear;
+  box-shadow: 0 0.4em 1em rgba(0, 0, 0, 0.1);
+  display: block;
+}
+
+#retake {
+  color: white;
+  border-radius: 2em;
+  font-size: 16px;
+  position: relative;
+  cursor: pointer;
+  padding: 10px 20px;
+  border: none;
+  background: #1a1a1a;
+  transition: all 0.1s linear;
+  box-shadow: 0 0.4em 1em rgba(0, 0, 0, 0.1);
+}
+
+#photo_num {
+  color: white;
+  border-radius: 2em;
+  font-size: 16px;
+  position: relative;
+  cursor: pointer;
+  padding: 10px 20px;
+  border: none;
+  background: #1a1a1a;
+  transition: all 0.1s linear;
+  box-shadow: 0 0.4em 1em rgba(0, 0, 0, 0.1);
+}
+
+#countdown {
+  position: absolute;
+  display: block;
+  top: 38%;
+  left: 29%;
+  z-index: 99;
+  font-size: 8em;
+  color: black;
+  background-color: rgba(255, 255, 255, 0.493);
+  border-radius: 2em;
+  padding: 1px 40px;
+}
+
+.photo_cont {
+  display: flex;
+  flex-direction: column;
+  grid-column-start: 3;
+  grid-row-start: 1;
+  grid-row-end: 7;
+
+  align-items: center;
+  gap: 20px;
+}
+
+#counter {
+  position: relative;
+  top: -1em;
+  background-color: #1a1a1a;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 2em;
+}
+
+#frame_page {
+  color: white;
+  border-radius: 2em;
+  font-size: 16px;
+  position: relative;
+  cursor: pointer;
+  padding: 10px 20px;
+  border: none;
+  background: #1a1a1a;
+  transition: all 0.1s linear;
+  box-shadow: 0 0.4em 1em rgba(0, 0, 0, 0.1);
+  display: none;
+}
+.p4_maincont {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  height: 100%;
+  width: 100%;
+}
+
+.P_cont {
+  display: flex;
+  place-self: center;
+}
+
+.F_cont {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.F_major {
+  display: flex;
+
+  flex-wrap: wrap;
+  width: 290px;
+  gap: 15px;
+}
+
+.color-btn {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 5px solid white;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+.Frames {
+  display: flex;
+  gap: 30px;
+}
+
+.F_titles {
+  display: flex;
+  gap: 220px;
+}
+
+.C_frames {
+  display: flex;
+
+  flex-wrap: wrap;
+  width: 290px;
+  gap: 15px;
+}
+.btn_container {
+  display: flex;
+  gap: 30px;
+}
+
+#Download {
+  color: white;
+  border-radius: 2em;
+  font-size: 16px;
+  position: relative;
+  cursor: pointer;
+  padding: 10px 20px;
+  border: none;
+  background: #1a1a1a;
+  transition: all 0.1s linear;
+  box-shadow: 0 0.4em 1em rgba(0, 0, 0, 0.1);
+  display: block;
+}
+
+#Finish {
+  color: white;
+  background-color: #1a1a1a;
+  font-size: 16px;
+  position: relative;
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 2em;
+  box-shadow: 0 0.4em 1em rgba(0, 0, 0, 0.1);
+  transition: all 0.1s linear;
+  display: block;
+  border: none;
+}
+
+.home_cont {
+  background-image: url(glbg.png);
+  display: flex;
+  flex-direction: column;
+  border: 2px solid;
+  height: 98vh;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+
+.Gl {
+  width: 700px;
+  height: 600px;
+}
+
+.next {
+  color: white;
+  border-radius: 2em;
+  font-size: 16px;
+  position: relative;
+  cursor: pointer;
+  padding: 10px 20px;
+  border: none;
+  background: #1a1a1a;
+  transition: all 0.1s linear;
+  box-shadow: 0 0.4em 1em rgba(0, 0, 0, 0.1);
+  display: block;
+}
